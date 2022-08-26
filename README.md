@@ -30,3 +30,14 @@ Zecca, A. (2011). Diffraction of Gaussian wave packets by a single slit. The Eur
 
 ### Large gaussian wave packet through two slits
 ![Alt text](https://github.com/FelixDesrochers/Electron-diffraction/blob/master/animation/2D_2slits_dx008_dt0005_yf10.gif?raw=true "Title")
+
+Another papers related:
+https://scholar.harvard.edu/files/schwartz/files/lecture11-wavepackets.pdf
+https://python.plainenglish.io/simulation-of-the-electron-packet-in-python-1a0e7d1ebad1
+https://medium.com/nerd-for-tech/animating-schrodinger-wave-function-%CF%88-of-a-particle-using-python-with-full-code-5ad9e4852906
+
+Schordinger Ecuation from Newton picture:
+
+
+
+
