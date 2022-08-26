@@ -37,6 +37,7 @@ https://python.plainenglish.io/simulation-of-the-electron-packet-in-python-1a0e7
 https://medium.com/nerd-for-tech/animating-schrodinger-wave-function-%CF%88-of-a-particle-using-python-with-full-code-5ad9e4852906
 
 Schordinger Ecuation from Newton picture:
+![Alt text](https://github.com/aitmoreno/Electron-diffraction/blob/master/animation/Ecuaci%C3%B3n%20de%20Schrodinger_folio.jpg?raw=true)
 
 
 
