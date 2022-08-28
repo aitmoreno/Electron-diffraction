@@ -155,7 +155,7 @@ nb_frame = 300
 nbr_level = 200
 
 #Create the figure
-fig = plt.figure(figsize=(11,8))
+fig = plt.figure(num = 3, figsize=(11,8))
 gs = gridspec.GridSpec(3, 3, width_ratios=[1,1,1.5], height_ratios=[1,0.1,1])
 ax1 = plt.subplot(gs[:,:-1])
 ax2 = plt.subplot(gs[0,-1],projection='3d')
@@ -240,7 +240,7 @@ def animate(i):
     S.step()
     z = S.get_prob().reshape(size_x,size_y).transpose()
     coupe[i] = z[:,k]
-
+    
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -263,7 +263,7 @@ def animate(i):
     #iii)third plot
     ax3.plot(yy[:,k],z[:,k])
     ax3.set_xlim([y_min, y_max])
-    ax3.set_ylim([0, 0.23])
+    ax3.set_ylim([0, 0.23]) 
     ax3.set_xlabel(r"y ($a_0$)", fontsize = 9)
     ax3.set_ylabel(r"$|\psi(y,t)|^2$", fontsize = 9)
 
@@ -299,8 +299,11 @@ def animate(i):
     ticks = intervalle(z.max(), 0, major_ticks)
     cbar1.set_ticks(ticks)
     cbar1.set_ticklabels(ticks)
-
+    
+    plt.show()
+    plt.waitforbuttonpress(1)
     print(i)
+    
 
 
 interval = 0.001

@@ -4,6 +4,7 @@
 import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import spsolve
+import matplotlib.pylab as plt
 
 class WaveFunction(object):
 
@@ -26,6 +27,8 @@ class WaveFunction(object):
         dimension = self.size_x*self.size_y
 
         #Building the first matrix to solve the system (A from Ax_{n+1}=Mx_{n})
+        #Sparse matrix https://tbetcke.github.io/hpc_lecture_notes/sparse_linalg_pde.html
+        #http://dm.udc.es/elearning/MaterialDocente/sparse.pdf
         N = (self.size_x-1)*(self.size_y-1)
         size = 5*N + 2*self.size_x + 2*(self.size_y-2)
         I = np.zeros(size)
@@ -81,8 +84,13 @@ class WaveFunction(object):
                     K[k] = alpha
                     k += 1
 
+        
         self.Mat1 = sparse.coo_matrix((K,(I,J)),shape=(dimension,dimension)).tocsc()
-
+        #fig = plt.figure(num=1, clear=True, figsize = [10,8])
+        #plt.spy(self.Mat1)  
+        #plt.title("Mat1")
+        #plt.show()
+        
         #Building the second matrix to solve the system (M from Ax_{n+1}=Mx_{n})
         I = np.zeros(size)
         J = np.zeros(size)
@@ -136,8 +144,11 @@ class WaveFunction(object):
                     J[k] = i + (j+1)*self.size_y
                     K[k] = -alpha
                     k += 1
+                    
+        
 
         self.Mat2 = sparse.coo_matrix((K,(I,J)),shape=(dimension,dimension)).tocsc()
+       
 
 
     def get_prob(self):
@@ -148,7 +159,13 @@ class WaveFunction(object):
 
     def step(self):
         #Update the state
+        
         self.psi = spsolve(self.Mat1, self.Mat2.dot(self.psi))
-
+        
+        fig = plt.figure(num=5, clear=True, figsize = [10,8])
+        plt.imshow(np.matrix(np.reshape(self.psi, (301, 264)).real)) 
+        plt.show()
+        plt.waitforbuttonpress(1)
+        
         #Update time
         self.t += self.dt
